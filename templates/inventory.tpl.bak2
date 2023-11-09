@@ -1,0 +1,40 @@
+all:
+  hosts:
+%{ for index, ip in master_node_nat ~}
+    master${index+1}:
+      ansible_host: ${ip}
+      ip: ${master_node_ip[index]}
+      access_ip: ${ip}
+      ansible_user: ro.khabibullin
+      ansible_ssh_key: ~/.ssh/id_rsa
+%{ endfor ~}
+%{ for index, ip in worker_node_nat ~}
+    worker${index+1}:
+      ansible_host: ${ip}
+      ip: ${worker_node_ip[index]}
+      access_ip: ${ip}
+      ansible_user: ro.khabibullin
+      ansible_ssh_key: ~/.ssh/id_rsa
+%{ endfor ~}    
+  children:
+    kube_control_plane:
+      hosts:
+%{ for index, ip in master_node_nat ~}
+        master${index+1}:
+%{ endfor ~}
+    kube_node:
+      hosts:
+%{ for index, ip in worker_node_nat ~}
+        worker${index+1}:
+%{ endfor ~} 
+    etcd:
+      hosts:
+%{ for index, ip in master_node_nat ~}
+        master${index+1}:
+%{ endfor ~}
+    k8s_cluster:
+      children:
+        kube_control_plane:
+        kube_node:
+    calico_rr:
+      hosts: {}

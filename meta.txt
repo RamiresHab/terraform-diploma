@@ -1,0 +1,8 @@
+#cloud-config
+users:
+  - name: ro.khabibullin
+    groups: sudo
+    shell: /bin/bash
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    ssh_authorized_keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC867cZghizFw+gpNMoOOx6Dm8z4E/P0iRsfKge3yZTn1DINKFr6rV/21Nx3SFs3tIXiHRywnVUiFHFGCLe3WOVqvuYxEswujC84UFsWDH+euvEO7GyrILpf4vwZlz6wdc3vsGQXjyHAFxZZUsDUfyGiG/xwEFsqxLcwvx3YQacbKDftQVS8nc/g4bbhrCcUqcjoj9Abiabj53DM0ig2uJGjsjM4Y2FH4PV0kfiNeEqFKqV6E963BuQiufX4+fEFzSbW+sIu7c9LhiGy4vyl5MjwQlGERgdqxr62+IzMdpptE7D8jBnY/ZyiZrCPi28o7dKCCCSBWtiutdtM/Dn0qGqofp/FlFt4SLxIlF36L4jZyC0ZHJSuEiecTpIGeyrIvr3HtrgdErQQhBE/9/GtWQfsjvcBKyBypxmePGqg+0DNyPF5868zy/O1YOIcgXqDdlELAeA/GRWwx+rheBbR89D3EJ8/dlW5tkjBq0zIw6PZgWyrka+5qVKpJMs6PRhW3s= ro.khabibullin@NB0557.local
